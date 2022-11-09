@@ -1,0 +1,9 @@
+{
+  "name": "planon-shizzle",
+  "version": "0.0.0",
+  "description": "Planon shizzle",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
