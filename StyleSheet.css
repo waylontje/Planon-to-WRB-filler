@@ -1,0 +1,61 @@
+﻿body {
+}
+
+
+.button {
+    display: block;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0 auto;
+    min-width: 8px;
+    line-height: 36px;
+    padding: 0 30px;
+    border-radius: 4px;
+    overflow: visible;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #25167a;
+    width: 80%;
+    color: #fff;
+    box-shadow: 0 1px #150a52;
+}
+
+    .button:hover {
+        background-color: #311da3
+    }
+
+    .button:active {
+        background-color: #311da3;
+        box-shadow: 0 0px #150a52;
+        transform: translateY(1px);
+    }
+.tweedebutton {
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 8px;
+    line-height: 36px;
+    padding: 0 35px;
+    border-radius: 4px;
+    overflow: visible;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #25167a;
+    color: #fff;
+    width: 80%;
+}
+    

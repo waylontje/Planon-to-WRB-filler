@@ -1,4 +1,4 @@
-( function () {
+( async function () {
     console.log("Ripper.js opened");
 
 
@@ -19,7 +19,7 @@
 
     if (textElement) {
         let textElementStr = textElement.value;
-        console.log(textElementStr)
+        //console.log(textElementStr)
         const textArray = textElementStr.split("\n");
 
 
@@ -31,7 +31,13 @@
         }));
 
         console.log(textMap);
-        return textMap
+        //return textMap
+
+        await chrome.storage.local.set({ ['pInfo']: textElementStr }, function () {
+            console.log('textElement was saved' + textElementStr)
+        
+        })
+
         //console.log(textAreaRip);
 
 

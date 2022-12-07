@@ -1,9 +1,18 @@
 console.log("Action.js opened");
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("getPlanonInfo").addEventListener("click", runscript);
+    document.getElementById("getAndPasteRoomInfo").addEventListener("click", runRoomInfoScript);
 });
 
-async function runscript() {
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("pasteUserInfo").addEventListener("click", runGInfoScript);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("pasteConfirmation").addEventListener("click", pasteConfirmationScript);
+});
+
+
+async function runRoomInfoScript() {
     console.log("event listener fires");
     let queryOptions = {
         url: "https://uvahva-prod.planoncloud.com/home/UvAHvA/wc_uvahva?*"
@@ -11,26 +20,18 @@ async function runscript() {
 
     let [tab] = await chrome.tabs.query(queryOptions);
 
-   // console.log(tab);
+    
+    let ripInfo = await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        files: ["ripper.js"]
+    });
 
-    // let frameId = ["pcc_keycloakloader", "workspaceFrame", "home", ""];
+    console.log(ripInfo);
+    
 
-    // for (let i = 0; i < frameId.length; i++) {
-    let ripInfo = await chrome.scripting.executeScript(
-        {
-            target: { tabId: tab.id, allFrames: true },
-            files: ["ripper.js"]
-        },
+    let info = ripInfo[4];
 
-       
-    );
-
-    console.log(ripInfo[4]);
-    //}
-
-    let info = ripInfo[4].result
-
-    console.log(info)
+    console.log(info);
 
     queryOptions = {
         url: "https://roosterportal-wrb.hva.nl/WRB/*"
@@ -38,26 +39,56 @@ async function runscript() {
 
     [tab] = await chrome.tabs.query(queryOptions);
 
-    chrome.scripting.executeScript({
-        code: "let info = JSON.parse('" + encoder(info) + "');"
-    }, function () {
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id, allFrames: true },
-            file: "plakker.js"
-        });
+    await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        files: ["plakker.js"]
     });
 
 
-    function encoder(obj) {
-        //Encodes into JSON and quotes \ characters so they will not break
-        //  when re-interpreted as a string literal. Failing to do so could
-        //  result in the injection of arbitrary code and/or JSON.parse() failing.
-        return JSON.stringify(obj).replace(/\\/g, '\\\\').replace(/'/g, "\\'")
-    }
+    
+    
+    
+}
 
 
+async function runGInfoScript() {
 
-    console.log("ripper js word aangeroepen");
-    // });
-    console.log("einde action.js");
+    let queryOptions = {
+        url: "https://roosterportal-wrb.hva.nl/WRB/*"
+    };
+
+    let [tab] = await chrome.tabs.query(queryOptions);
+    await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        files: ["gegevensplakker.js"]
+    });
+}
+
+
+async function pasteConfirmationScript() {
+
+    let queryOptions = {
+        url: "https://roosterportal-wrb.hva.nl/WRB/*"
+    };
+
+    let [tab] = await chrome.tabs.query(queryOptions);
+    await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        files: ["bevestigingspakker.js"]
+    });
+
+
+   
+    queryOptions = {
+        url: "https://uvahva-prod.planoncloud.com/home/UvAHvA/wc_uvahva?*"
+    };
+
+    [tab] = await chrome.tabs.query(queryOptions);
+
+
+    await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        files: ["bevestigingsplakker.js"]
+    });
+
 }

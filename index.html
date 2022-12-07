@@ -7,21 +7,32 @@
         html,
         body {
             height: 100px;
-            width: 200px;
+            width: 300px;
         }
     </style>
+    <link rel="stylesheet" href="StyleSheet.css">
 </head>
 
 <body>
     <div id="title">
         <h3>Planon to WRB copy</h3>
     </div>
-    <div id="butons">
-        <div><button id="getPlanonInfo">pak planon info</button></div>
+    <div id="buttons">
+        <div>
+            <button class="button" id="getAndPasteRoomInfo">Pak Ruimte Info</button>
+        </div>
         <div><br /></div>
-        <button id="pushRoomInfo">plak ruimte info</button>
+        <div>
+            <button class="button" id="pasteUserInfo">Plak Gebruikers Info</button>
+        </div>
         <div><br /></div>
-        <button id="pushUserInfo">plak gebruikers info</button>
+        <div>
+            <button class="button" id="pasteConfirmation">Plak Bevestiging</button>
+        </div>
+        <div><br /></div>
+
+
+
     </div>
     <script src="action.js"></script>
 </body>

@@ -1,15 +1,14 @@
 {
-  "manifest_version": 3,
-  "name": "Test Planon ding",
-  "version": "0.0.60",
-  "description": "Get info from planon en put it in WRB",
-
   "action": {
     "default_title": "click me",
     "default_popup": "index.html",
     "default_icon": "wrb_icon.png"
   },
 
+  "description": "Get info from planon en put it in WRB",
   "host_permissions": [ "http://*/*", "https://*/*" ],
-  "permissions": [ "scripting", "activeTab" ]
+  "manifest_version": 3,
+  "name": "Test Planon ding",
+  "permissions": [ "scripting", "activeTab", "storage" ],
+  "version": "0.0.650"
 }
