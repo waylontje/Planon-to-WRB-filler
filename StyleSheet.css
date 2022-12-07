@@ -1,6 +1,11 @@
 ﻿body {
+    height: 100px;
+    width: 300px;
 }
 
+div {
+    display: block;
+}
 
 .button {
     display: block;
@@ -8,7 +13,6 @@
     white-space: nowrap;
     text-align: center;
     margin: 0 auto;
-    min-width: 8px;
     line-height: 36px;
     padding: 0 30px;
     border-radius: 4px;
@@ -57,5 +61,11 @@
     background-color: #25167a;
     color: #fff;
     width: 80%;
+}
+
+#title {
+    text-align: center;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+
 }
     
